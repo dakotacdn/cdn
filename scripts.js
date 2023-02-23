@@ -7,16 +7,15 @@
 
 <div class="g-play-btn ElementsApp is-empty" dir="ltr" style=""> ><span tabindex="-1" aria-hidden="true" style=" opacity: 0; pointer-events: none; height: 2px; width: 2px; position: absolute; top: -2px; user-select: none; " >0123456789０１２３４５６７８９</span ><input tabindex="0" aria-hidden="true" class="StripeField--fake" autocomplete="fake" style=" opacity: 0; pointer-events: none; height: 2px; width: 2px; position: absolute; top: -2px; " disabled="" /><button id="primary" class="GooglePayButton GooglePayButton--default GooglePayButton--light" aria-label="Google Pay" role="button" type="submit" style="border-radius: 4px; opacity: 1" > <div class="GooglePayButton-logo" style=" background-image: url('https://js.stripe.com/v3/fingerprinted/img/light-a4be6ea596645a738d383e4940615eaf.svg'); " ></div></button ><input tabindex="0" aria-hidden="true" class="StripeField--fake" autocomplete="fake" style=" opacity: 0; pointer-events: none; height: 2px; width: 2px; position: absolute; top: -2px; " disabled="" /><button tabindex="-1" aria-hidden="true" type="submit" style=" opacity: 0; pointer-events: none; height: 2px; width: 2px; position: absolute; top: -2px; " ></button> </div> `;
   const div = document.createElement("div");
+  div.id = "stripe-private-form-wrapper";
   div.innerHTML = html;
   var element = document.querySelector(".elementor-widget-container iframe");
 
   var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (mutation.type === "attributes" && mutation.target.height == "0") {
-        const href = window.location.href;
-
         const container = document.querySelector("div[data-paperform-id]");
-        container?.parentElement.insertBefore(div, container);
+        container.appendChild(div);
       }
     });
   });
@@ -25,5 +24,5 @@
     attributes: true,
     attributeFilter: ["height"],
   });
-  console.log('init')
+  console.log("init");
 })();
