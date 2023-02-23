@@ -33,4 +33,6 @@
     attributes: true,
     attributeFilter: ["height"],
   });
+  
+  console.log('init')
 })();
