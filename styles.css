@@ -10041,3 +10041,32 @@ input:disabled::placeholder {
   .GooglePayButton--lightOutline:hover {
     background-color: #f8f8f8;
   }
+form.stripe-private-form.Checkout.Checkout--modal {
+    margin-bottom: 0 !important;
+}
+.LiveField__answer input{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: -0.5px;
+}
+.StripeCheckout__CardWrapper .StripeElement {
+    padding-top: 9px;
+    padding-bottom: 4px;
+}
+
+form.stripe-private-form.Checkout.Checkout--modal{
+    background: white !important;
+}
+div#root {
+    position: absolute;
+    width: 100%;
+}
+div#stripe-campaign-btn {
+    max-width: 440px;
+    width: 100%;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    top: 378px;
+}
