@@ -169,6 +169,13 @@
             }`;
             document.body.appendChild(styling);
           }
+          if (container.offsetHeight > 640){
+            const styling = document.createElement("style");
+            styling.innerHTML = `div#stripe-private-form-wrapper #root + div {
+                top: 64% !important;
+            }`
+            document.body.appendChild(styling);
+          }
           if (container.offsetHeight <= 716) {
             container.parentElement.style.display = "none";
             container.appendChild(div);
