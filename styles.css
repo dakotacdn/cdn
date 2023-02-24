@@ -10063,7 +10063,7 @@ div#stripe-private-form-wrapper #root ~ div {
 }
 
 div#stripe-private-form-wrapper #root + div {
-  top: 64%;
+  top: 63%;
 }
 .GooglePayButton {
   width: 100% !important;
@@ -10080,4 +10080,32 @@ div#stripe-private-form-wrapper #root + div {
 }
 form.stripe-private-form.Checkout.Checkout--modal > div {
     background: white;
+}
+@media (max-width: 477px){
+    div#stripe-private-form-wrapper #root ~ div{
+        width: 100% !important;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+@media (max-width: 450px){
+    div#stripe-private-form-wrapper #root ~ div{
+        width: 100% !important;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+}
+@media (max-width: 378px){
+    div#stripe-private-form-wrapper #root ~ div{
+        width: 100% !important;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+@media (max-width: 325px){
+    div#stripe-private-form-wrapper #root ~ div{
+        width: 100% !important;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 }
