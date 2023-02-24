@@ -158,7 +158,9 @@
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         setTimeout(() => {
           const container = document.querySelector("div[data-paperform-id]");
+          console.log({cheight: container.height})
           if (container.height <= 716) {
+            console.log("in 2")
             container.parentElement.style.display = "none";
             container.appendChild(div);
             document.querySelector(".sk-fading-circle").style.opacity = 1;
