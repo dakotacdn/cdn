@@ -297,7 +297,7 @@
                 container.scrollIntoView();
                 setTimeout(() => {
                   if (div) div.style.display = "none";
-                }, 3000);
+                }, 5000);
               }
             }
 
