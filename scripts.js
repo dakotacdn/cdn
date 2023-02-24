@@ -166,7 +166,12 @@
             }
             .g-play-btn.ElementsApp.is-empty {
                 top: 83% !important;
-            }`;
+            }
+            
+            div#bg-stripe {
+              height: 250px !important;
+          }
+            `;
             document.body.appendChild(styling);
           }
           if (container.offsetHeight > 640) {
