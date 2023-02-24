@@ -48,6 +48,8 @@
         // checks per each, as their could be multiple hits
         if (cur_val.match(visa_regex)) {
           $(logos_obj).addClass("is_visa");
+          $(logos_obj).removeClass("is_nothing");
+          $(logos_obj).removeClass("is_empty");
           typeCardDisplay(imgs.visa);
         } else {
           $(logos_obj).removeClass("is_visa");
@@ -55,6 +57,8 @@
 
         if (cur_val.match(mastercard_regex)) {
           $(logos_obj).addClass("is_mastercard");
+          $(logos_obj).removeClass("is_nothing");
+          $(logos_obj).removeClass("is_empty");
           typeCardDisplay(imgs.mastercard);
         } else {
           $(logos_obj).removeClass("is_mastercard");
@@ -62,6 +66,8 @@
 
         if (cur_val.match(amex_regex)) {
           $(logos_obj).addClass("is_amex");
+          $(logos_obj).removeClass("is_nothing");
+          $(logos_obj).removeClass("is_empty");
           typeCardDisplay(imgs.amex);
         } else {
           $(logos_obj).removeClass("is_amex");
@@ -69,6 +75,8 @@
 
         if (cur_val.match(diners_regex)) {
           $(logos_obj).addClass("is_diners");
+          $(logos_obj).removeClass("is_nothing");
+          $(logos_obj).removeClass("is_empty");
           typeCardDisplay(imgs.diners);
         } else {
           $(logos_obj).removeClass("is_diners");
@@ -76,6 +84,8 @@
 
         if (cur_val.match(discover_regex)) {
           $(logos_obj).addClass("is_discover");
+          $(logos_obj).removeClass("is_nothing");
+          $(logos_obj).removeClass("is_empty");
           typeCardDisplay(imgs.discover);
         } else {
           $(logos_obj).removeClass("is_discover");
