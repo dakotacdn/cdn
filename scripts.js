@@ -157,9 +157,9 @@
       console.log({ height: mutation.target.height });
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         console.log("ing");
-        
+
         const container = document.querySelector("div[data-paperform-id]");
-        container.parentElement.style.display = "none"
+        container.parentElement.style.display = "none";
         container.appendChild(div);
         document.querySelector(".sk-fading-circle").style.opacity = 1;
         document.querySelector(
@@ -262,18 +262,20 @@
            div#field-error-text-undefined {
             height: 40px !important;
         }
-        </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`
-        const div = document.createElement("div")
-        div.innerHTML = error
-        div.id = "LiveField_error_wrapper"
-        const container = document.querySelector("div[data-paperform-id]");
-        container.parentElement.insertBefore(div, container)
+        </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`;
+          const div = document.createElement("div");
+          div.innerHTML = error;
+          div.id = "LiveField_error_wrapper";
+          const container = document.querySelector("div[data-paperform-id]");
+          container.parentElement.insertBefore(div, container);
 
-        container.scrollIntoView();
-        setTimeout(()=> {container?.style.display = "none"},  3000)
-        container.addEventListener("mouseenter", function(){
-            container?.style.display = "none"
-        })
+          container.scrollIntoView();
+          setTimeout(() => {
+            if (container) container.style.display = "none";
+          }, 3000);
+          container.addEventListener("mouseenter", function () {
+            if (container) container.style.display = "none";
+          });
         }
 
         document
@@ -320,7 +322,7 @@
             localStorage.setItem("paperform-Postfill", "true");
           });
         document.querySelector(".sk-fading-circle").style.opacity = 0;
-        container.parentElement.style.display = "block"
+        container.parentElement.style.display = "block";
         document.querySelector(
           "form.stripe-private-form.Checkout.Checkout--modal > div > div"
         ).style.opacity = 1;
