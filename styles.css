@@ -9909,13 +9909,16 @@ input:disabled::placeholder {
   display: none !important;
 }
 .stripe-private-form .CardBrandIcon > div:not(.is_nothing):not(.is_empty) img {
-  display: block !important;
+  display: none !important;
 }
+.stripe-private-form .CardBrandIcon > div.has-card:not(.is_nothing):not(.is_empty) img {
+    display: block !important;
+  }
 .stripe-private-form
   .CardBrandIcon
   > div:not(.is_nothing):not(.is_empty)
   svg.empty {
-  display: none !important;
+  display: block !important;
 }
 .stripe-private-form .CardBrandIcon > div.is_empty svg.normal {
   display: none !important;
