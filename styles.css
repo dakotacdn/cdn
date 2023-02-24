@@ -10262,5 +10262,5 @@ div#bg-stripe {
   z-index: 0 !important;
   border-left: 5px solid white;
   border-right: 5px solid white;
-  min-width: 450px !important;
+  min-width: 102% !important;
 }
