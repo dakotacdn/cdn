@@ -305,6 +305,10 @@
               .querySelector(".CheckoutV2__checkout + div")
               .addEventListener("click", cancelJob.bind(true));
             document
+              .querySelector(" .g-play-btn.ElementsApp.is-empty")
+              .addEventListener("click", cancelJob.bind(true));
+
+            document
               .querySelector("button.btn-raised.btn-primary")
               .addEventListener("click", async function () {
                 document.querySelector(
