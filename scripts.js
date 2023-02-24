@@ -154,14 +154,17 @@
 
   var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
+      console.log({ height: mutation.target.height });
       if (mutation.type === "attributes" && mutation.target.height == "0") {
+        console.log("ing");
+
+        const container = document.querySelector("div[data-paperform-id]");
+        container.parentElement.style.display = "none"
+        container.appendChild(div);
         document.querySelector(".sk-fading-circle").style.opacity = 1;
         document.querySelector(
           "form.stripe-private-form.Checkout.Checkout--modal > div > div"
         ).style.opacity = 0;
-
-        const container = document.querySelector("div[data-paperform-id]");
-        container.appendChild(div);
         $(".stripe-cc-input").creditCardTypeDetector();
 
         document
@@ -255,7 +258,7 @@
             localStorage.setItem("paperform-Postfill", "true");
           });
         document.querySelector(".sk-fading-circle").style.opacity = 0;
-
+        container.parentElement.style.display = "block"
         document.querySelector(
           "form.stripe-private-form.Checkout.Checkout--modal > div > div"
         ).style.opacity = 1;
