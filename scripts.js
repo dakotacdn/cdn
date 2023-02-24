@@ -155,6 +155,11 @@
   var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (mutation.type === "attributes" && mutation.target.height == "0") {
+        document.querySelector(".sk-fading-circle").style.opacity = 1;
+        document.querySelector(
+          "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+        ).style.opacity = 0;
+
         const container = document.querySelector("div[data-paperform-id]");
         container.appendChild(div);
         $(".stripe-cc-input").creditCardTypeDetector();
@@ -195,10 +200,15 @@
           });
 
         function cancelJob() {
+          document.querySelector(".sk-fading-circle").style.opacity = 1;
+          document.querySelector(
+            "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+          ).style.opacity = 0;
           const wrapper = document.querySelector(
             "div#stripe-private-form-wrapper"
           );
           wrapper.parentElement.removeChild(wrapper);
+          document.querySelector(".sk-fading-circle").style.opacity = 0;
         }
 
         document
@@ -244,6 +254,11 @@
             cancelJob();
             localStorage.setItem("paperform-Postfill", "true");
           });
+        document.querySelector(".sk-fading-circle").style.opacity = 0;
+
+        document.querySelector(
+          "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+        ).style.opacity = 1;
       }
     });
   });
