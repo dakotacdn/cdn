@@ -355,7 +355,7 @@
               "form.stripe-private-form.Checkout.Checkout--modal > div > div"
             ).style.opacity = 1;
           }
-        }, 1000);
+        }, 2000);
       }
     });
   });
