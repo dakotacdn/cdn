@@ -158,7 +158,7 @@
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         setTimeout(() => {
           const container = document.querySelector("div[data-paperform-id]");
-          console.log({xd: container.offsetHeight})
+          console.log({ xd: container.offsetHeight });
           if (container.offsetHeight < 580) {
             const styling = document.createElement("style");
             styling.innerHTML = `div#stripe-private-form-wrapper #root + div {
@@ -169,11 +169,11 @@
             }`;
             document.body.appendChild(styling);
           }
-          if (container.offsetHeight > 640){
+          if (container.offsetHeight > 640) {
             const styling = document.createElement("style");
             styling.innerHTML = `div#stripe-private-form-wrapper #root + div {
                 top: 64% !important;
-            }`
+            }`;
             document.body.appendChild(styling);
           }
           if (container.offsetHeight <= 716) {
@@ -293,9 +293,6 @@
                 setTimeout(() => {
                   if (div) div.style.display = "none";
                 }, 3000);
-                div.addEventListener("mouseenter", function () {
-                  if (div) div.style.display = "none";
-                });
               }
             }
 
