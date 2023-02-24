@@ -270,10 +270,10 @@
 
           container.scrollIntoView();
           setTimeout(() => {
-            if (container) container.style.display = "none";
+            if (div) div.style.display = "none";
           }, 3000);
-          container.addEventListener("mouseenter", function () {
-            if (container) container.style.display = "none";
+          div.addEventListener("mouseenter", function () {
+            if (div) div.style.display = "none";
           });
         }
 
