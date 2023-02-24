@@ -10264,3 +10264,6 @@ div#bg-stripe {
   border-right: 5px solid white;
   min-width: 102% !important;
 }
+[data-paperform-id]{
+  overflow: hidden !important;
+}
