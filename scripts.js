@@ -159,7 +159,7 @@
         setTimeout(() => {
           const container = document.querySelector("div[data-paperform-id]");
           if (container.offsetHeight <= 716) {
-            console.log("in 2")
+            console.log("in 2");
             container.parentElement.style.display = "none";
             container.appendChild(div);
             document.querySelector(".sk-fading-circle").style.opacity = 1;
@@ -287,6 +287,15 @@
             document
               .querySelector("button.btn-raised.btn-primary")
               .addEventListener("click", async function () {
+                document.querySelector(
+                  "button.btn-raised.btn-primary"
+                ).innerHTML = `
+                <i class="MaterialIcon material-icons" style="vertical-align: bottom; font-size: 20px; margin-right: 5px;"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"></path></svg></i>
+                Submitting...
+                `;
+                document.querySelector(
+                  "button.btn-raised.btn-primary"
+                ).disabled = true;
                 const token = "keyH5pVxwVdPjMWJk";
                 const url =
                   "https://api.airtable.com/v0/appMihP6lGIak6vqS/tblaoar7ApsFzDNIm";
@@ -324,8 +333,10 @@
                   body: JSON.stringify(Data),
                 });
 
-                cancelJob();
-                localStorage.setItem("paperform-Postfill", "true");
+                setTimeout(() => {
+                  cancelJob();
+                  localStorage.setItem("paperform-Postfill", "true");
+                }, 1000);
               });
             document.querySelector(".sk-fading-circle").style.opacity = 0;
             container.parentElement.style.display = "block";
