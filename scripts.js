@@ -157,7 +157,7 @@
       console.log({ height: mutation.target.height });
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         console.log("ing");
-
+        
         const container = document.querySelector("div[data-paperform-id]");
         container.parentElement.style.display = "none"
         container.appendChild(div);
@@ -212,6 +212,68 @@
           );
           wrapper.parentElement.removeChild(wrapper);
           document.querySelector(".sk-fading-circle").style.opacity = 0;
+
+          const error = `<style> .Checkout .LiveField__error {
+            margin: 0;
+        }
+        .LiveField--error .LiveField__error {
+            height: auto;
+            padding: 6px 0;
+        }
+        <style>
+        .LiveField__error {
+            margin-top: -1px;
+        }
+        <style>
+        .LiveField__error {
+            background-color: #ffa3a3;
+        }
+        @media (min-width: 600px)
+        .LiveField__error {
+            transition: height 0.3s;
+        }
+        .LiveField__error {
+            height: 40px;
+            padding: 0;
+            position: relative;
+            background-color: #ffa3a3;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 18px;
+            overflow: hidden;
+        
+            width: 440px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            align-items: center;
+        } 
+           #LiveField_error_wrapper {
+            position: absolute;
+            top: 0;
+            z-index: 99;
+            left: 50%;
+            transform: translateX(-50%);
+           }
+           div#field-error-text-undefined {
+            height: 40px !important;
+        }
+        </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`
+        const div = document.createElement("div")
+        div.innerHTML = error
+        div.id = "LiveField_error_wrapper"
+        const container = document.querySelector("div[data-paperform-id]");
+        container.parentElement.insertBefore(div, container)
+
+        container.scrollIntoView();
+        setTimeout(()=> {container?.style.display = "none"},  3000)
+        container.addEventListener("mouseenter", function(){
+            container?.style.display = "none"
+        })
         }
 
         document
