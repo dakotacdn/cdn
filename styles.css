@@ -9982,7 +9982,7 @@ input:disabled::placeholder {
   transform: translateX(-50%);
   left: 50%;
   height: auto;
-  top: 443px;
+  top: 460px;
 }
 @font-face {
   font-family: "Lato";
@@ -10063,19 +10063,21 @@ div#stripe-private-form-wrapper #root ~ div {
 }
 
 div#stripe-private-form-wrapper #root + div {
-  top: 378.7px;
+  top: 400.7px;
 }
 .GooglePayButton {
   width: 100% !important;
 }
-.CheckoutV2{
-    background-color: initial !important;
+.CheckoutV2 {
+  background-color: initial !important;
 }
 .LiveField__answer > input {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 .StripeCheckout__CardWrapper .StripeElement {
-    padding: 8px 0;
-    padding-bottom: 3.5px;
-
+  padding: 8px 0;
+  padding-bottom: 3.5px;
+}
+form.stripe-private-form.Checkout.Checkout--modal > div {
+    background: white;
 }
