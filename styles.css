@@ -9982,7 +9982,7 @@ input:disabled::placeholder {
   transform: translateX(-50%);
   left: 50%;
   height: auto;
-  top: 460px;
+  top: 73%;
 }
 @font-face {
   font-family: "Lato";
@@ -10063,7 +10063,7 @@ div#stripe-private-form-wrapper #root ~ div {
 }
 
 div#stripe-private-form-wrapper #root + div {
-  top: 400.7px;
+  top: 64%;
 }
 .GooglePayButton {
   width: 100% !important;
