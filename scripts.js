@@ -208,13 +208,13 @@
               document.querySelector(
                 "form.stripe-private-form.Checkout.Checkout--modal > div > div"
               ).style.opacity = 0;
-              if (action) return;
+
               const wrapper = document.querySelector(
                 "div#stripe-private-form-wrapper"
               );
               wrapper.parentElement.removeChild(wrapper);
-
-              const error = `<style> .Checkout .LiveField__error {
+              if (!action) {
+                const error = `<style> .Checkout .LiveField__error {
             margin: 0;
         }
         .LiveField--error .LiveField__error {
@@ -264,21 +264,22 @@
             height: 40px !important;
         }
         </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`;
-              const div = document.createElement("div");
-              div.innerHTML = error;
-              div.id = "LiveField_error_wrapper";
-              const container = document.querySelector(
-                "div[data-paperform-id]"
-              );
-              container.parentElement.insertBefore(div, container);
+                const div = document.createElement("div");
+                div.innerHTML = error;
+                div.id = "LiveField_error_wrapper";
+                const container = document.querySelector(
+                  "div[data-paperform-id]"
+                );
+                container.parentElement.insertBefore(div, container);
 
-              container.scrollIntoView();
-              setTimeout(() => {
-                if (div) div.style.display = "none";
-              }, 3000);
-              div.addEventListener("mouseenter", function () {
-                if (div) div.style.display = "none";
-              });
+                container.scrollIntoView();
+                setTimeout(() => {
+                  if (div) div.style.display = "none";
+                }, 3000);
+                div.addEventListener("mouseenter", function () {
+                  if (div) div.style.display = "none";
+                });
+              }
             }
 
             document
