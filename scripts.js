@@ -154,11 +154,11 @@
 
   var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
-      console.log({ height: mutation.target.height });
+      //console.log({ height: mutation.target.height });
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         setTimeout(() => {
           const container = document.querySelector("div[data-paperform-id]");
-          console.log({ xd: container.offsetHeight });
+          //console.log({ xd: container.offsetHeight });
           if (container.offsetHeight < 580) {
             const styling = document.createElement("style");
             styling.innerHTML = `div#stripe-private-form-wrapper #root + div {
@@ -377,5 +377,5 @@
     attributes: true,
     attributeFilter: ["height"],
   });
-  console.log("init");
+  //console.log("init");
 })();
