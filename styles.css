@@ -10248,3 +10248,9 @@ form.stripe-private-form.Checkout.Checkout--modal > div {
   -webkit-animation-delay: -0.1s;
   animation-delay: -0.1s;
 }
+.sk-fading-circle {
+    z-index: 999;
+    left: 50%;
+    top: 20%;
+    opacity: 0;
+}
