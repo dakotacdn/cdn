@@ -211,7 +211,6 @@
             "div#stripe-private-form-wrapper"
           );
           wrapper.parentElement.removeChild(wrapper);
-          document.querySelector(".sk-fading-circle").style.opacity = 0;
 
           const error = `<style> .Checkout .LiveField__error {
             margin: 0;
