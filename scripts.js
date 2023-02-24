@@ -158,6 +158,7 @@
       if (mutation.type === "attributes" && mutation.target.height == "0") {
         setTimeout(() => {
           const container = document.querySelector("div[data-paperform-id]");
+          console.log({xd: container.offsetHeight})
           if (container.offsetHeight < 580) {
             const styling = document.createElement("style");
             styling.innerHTML = `div#stripe-private-form-wrapper #root + div {
