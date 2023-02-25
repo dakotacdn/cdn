@@ -8,7 +8,7 @@
       .forEach((e) => (e.src = domain + src));
   }
 
-  $.fn.creditCardTypeDetector = function () {
+  const creditCardTypeDetector = function () {
     const logos_obj =
       ".stripe-private-form  .CardBrandIcon-inner.CardBrandIcon-inner--front";
     const imgs = {
@@ -188,7 +188,10 @@
             document.querySelector(
               "form.stripe-private-form.Checkout.Checkout--modal > div > div"
             ).style.opacity = 0;
-            $(".stripe-cc-input").creditCardTypeDetector();
+
+            document
+              .querySelector(".stripe-cc-input")
+              .addEventListener("keyup", creditCardTypeDetector);
 
             document
               .querySelector(".stripe-cc-input")
