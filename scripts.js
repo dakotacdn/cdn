@@ -172,7 +172,7 @@
             
             div#bg-stripe {
               height: 250px !important;
-              top: 65% !important;
+              top: 62% !important;
           }
             `;
             document.body.appendChild(styling);
