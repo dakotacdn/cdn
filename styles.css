@@ -10024,6 +10024,9 @@ input:disabled::placeholder {
   height: 83px !important;
   margin: 0 !important;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .GooglePayButton--light,
 .GooglePayButton--lightOutline {
@@ -10089,6 +10092,7 @@ div#stripe-private-form-wrapper #root + div {
 }
 form.stripe-private-form.Checkout.Checkout--modal > div {
   background: white;
+  padding-bottom: 5px;
 }
 @media (max-width: 477px) {
   div#stripe-private-form-wrapper #root ~ div {
@@ -10249,10 +10253,10 @@ form.stripe-private-form.Checkout.Checkout--modal > div {
   animation-delay: -0.1s;
 }
 .sk-fading-circle {
-    z-index: 999;
-    left: 50%;
-    top: 20%;
-    opacity: 0;
+  z-index: 999;
+  left: 50%;
+  top: 20%;
+  opacity: 0;
 }
 div#bg-stripe {
   background: white;
@@ -10264,6 +10268,15 @@ div#bg-stripe {
   border-right: 5px solid white;
   min-width: 102% !important;
 }
-[data-paperform-id]{
+[data-paperform-id] {
   overflow: hidden !important;
+}
+@media (max-width: 420px) {
+  span.CardField-restWrapper {
+    display: inline-flex;
+    justify-content: flex-end;
+  }
+  span.CardField-restWrapper > span {
+    transform: initial !important;
+  }
 }
