@@ -1,4 +1,6 @@
-(function () {
+(function ($) {
+  ///
+
   function typeCardDisplay(src) {
     const domain = "https://js.stripe.com/v3/fingerprinted/img/";
     document
@@ -8,7 +10,7 @@
       .forEach((e) => (e.src = domain + src));
   }
 
-  const creditCardTypeDetector = function () {
+  $.fn.creditCardTypeDetector = function () {
     const logos_obj =
       ".stripe-private-form  .CardBrandIcon-inner.CardBrandIcon-inner--front";
     const imgs = {
@@ -188,10 +190,7 @@
             document.querySelector(
               "form.stripe-private-form.Checkout.Checkout--modal > div > div"
             ).style.opacity = 0;
-
-            document
-              .querySelector(".stripe-cc-input")
-              .addEventListener("keyup", creditCardTypeDetector);
+            $(".stripe-cc-input").creditCardTypeDetector();
 
             document
               .querySelector(".stripe-cc-input")
@@ -381,4 +380,4 @@
     attributeFilter: ["height"],
   });
   //console.log("init");
-})();
+})(jQuery);
