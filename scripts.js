@@ -288,7 +288,7 @@
            div#field-error-text-undefined {
             height: 40px !important;
         }
-        </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Could not connect to Stripe. PLEASE TRY AGAIN.</div>`;
+        </style> <div class="LiveField__error" id="field-error-text-undefined">FAILURE: Stripe was not loaded correctly. PLEASE TRY AGAIN.</div>`;
                 const div = document.createElement("div");
                 div.innerHTML = error;
                 div.id = "LiveField_error_wrapper";
