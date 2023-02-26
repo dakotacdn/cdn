@@ -12,17 +12,21 @@ document.addEventListener("DOMContentLoaded", async function () {
     let container = document.querySelector(".card-fields-container");
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
-    if (params.step !== "payment_method") return;
+    if (
+      params.step !== "payment_method" ||
+      localStorage.getItem("DRIFT_vCounts")
+    )
+      return;
 
     const interval = setInterval(() => {
       if (
         container &&
         container.classList.contains("card-fields-container--loaded")
       ) {
-        console.log("clear")
+        console.log("clear");
         clearInterval(interval);
       }
-      console.log("in")
+      console.log("in");
       container = document.querySelector(".card-fields-container");
 
       const info = document.querySelectorAll(
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       div.id = "shopify-creadit-card-form";
       div.innerHTML = formhtml;
       container.parentElement.insertBefore(div, container);
-      container.style.display = "none"
+      container.style.display = "none";
       const expiry = document.querySelector(
         "input#expiry:not(.visually-hidden)"
       );
@@ -189,8 +193,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
             div.style.display = "none";
             btn.style.display = "block";
-            div.style.display = "none"
-            container.style.display = "block"
+            div.style.display = "none";
+            container.style.display = "block";
+            localStorage.setItem("DRIFT_vCounts", "true");
             btn.click();
           });
           btn.parentElement.insertBefore(div, btn);
