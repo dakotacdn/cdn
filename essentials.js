@@ -17,10 +17,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const interval = setInterval(() => {
       if (
         container &&
-        container.classList.contains(".card-fields-container--loaded")
+        container.classList.contains("card-fields-container--loaded")
       ) {
+        console.log("clear")
         clearInterval(interval);
       }
+      console.log("in")
       container = document.querySelector(".card-fields-container");
 
       const info = document.querySelectorAll(
