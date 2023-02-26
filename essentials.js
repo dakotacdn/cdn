@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       div.id = "shopify-creadit-card-form";
       div.innerHTML = formhtml;
       container.parentElement.insertBefore(div, container);
+      container.style.display = "none"
       const expiry = document.querySelector(
         "input#expiry:not(.visually-hidden)"
       );
@@ -186,6 +187,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
             div.style.display = "none";
             btn.style.display = "block";
+            div.style.display = "none"
+            container.style.display = "block"
             btn.click();
           });
           btn.parentElement.insertBefore(div, btn);
