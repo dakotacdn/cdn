@@ -68,7 +68,7 @@
 
         // if nothing is a hit we add a class to fade them all out
         if (cur_val == "") {
-          $(logos_obj).addClass("stripe-visa-brand");
+          $(logos_obj).addClass("stripe-credit-card-brand");
         } else if (
           !cur_val.match(visa_regex) &&
           !cur_val.match(mastercard_regex) &&
@@ -76,7 +76,7 @@
           !cur_val.match(diners_regex) &&
           !cur_val.match(discover_regex)
         ) {
-          $(logos_obj).addClass("stripe-visa-brand");
+          $(logos_obj).addClass("stripe-credit-card-brand");
           document.querySelector("#ccn").classList.add(".is-invalid");
         } else {
           document.querySelector("#ccn").classList.remove(".is-invalid");
