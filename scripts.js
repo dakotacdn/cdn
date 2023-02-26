@@ -34,6 +34,7 @@
         if (cur_val.match(visa_regex)) {
           $(logos_obj).addClass("stripe-visa-brand");
           $(logos_obj).removeClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else {
           $(logos_obj).removeClass("stripe-visa-brand");
         }
@@ -41,6 +42,7 @@
         if (cur_val.match(mastercard_regex)) {
           $(logos_obj).addClass("stripe-mastercard-brand");
           $(logos_obj).removeClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else {
           $(logos_obj).removeClass("stripe-mastercard-brand");
         }
@@ -48,6 +50,7 @@
         if (cur_val.match(amex_regex)) {
           $(logos_obj).addClass("stripe-amex-brand");
           $(logos_obj).removeClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else {
           $(logos_obj).removeClass("stripe-amex-brand");
         }
@@ -55,6 +58,7 @@
         if (cur_val.match(diners_regex)) {
           $(logos_obj).addClass("stripe-diners-brand");
           $(logos_obj).removeClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else {
           $(logos_obj).removeClass("stripe-diners-brand");
         }
@@ -62,6 +66,7 @@
         if (cur_val.match(discover_regex)) {
           $(logos_obj).addClass("stripe-discover-brand");
           $(logos_obj).removeClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else {
           $(logos_obj).removeClass("stripe-discover-brand");
         }
@@ -69,6 +74,7 @@
         // if nothing is a hit we add a class to fade them all out
         if (cur_val == "") {
           $(logos_obj).addClass("stripe-credit-card-brand");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         } else if (
           !cur_val.match(visa_regex) &&
           !cur_val.match(mastercard_regex) &&
@@ -77,9 +83,9 @@
           !cur_val.match(discover_regex)
         ) {
           $(logos_obj).addClass("stripe-credit-card-brand");
-          document.querySelector("#ccn").classList.add(".is-invalid");
+          document.querySelector("#ccn").classList.add("is-invalid");
         } else {
-          document.querySelector("#ccn").classList.remove(".is-invalid");
+          document.querySelector("#ccn").classList.remove("is-invalid");
         }
       });
     });
